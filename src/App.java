@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javax.swing.SwingUtilities;
 
 public class App {
@@ -7,7 +9,12 @@ public class App {
 		SwingUtilities.invokeLater(new Runnable() {
 			
 			public void run() {
-				new MainFrame();
+				try {
+					new MainFrame();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 		});

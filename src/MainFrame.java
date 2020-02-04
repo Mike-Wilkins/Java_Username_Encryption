@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,7 +20,14 @@ import javax.swing.border.LineBorder;
 
 public class MainFrame {
 	
-	public MainFrame() {
+	public MainFrame() throws IOException {
+		
+		//THIS IS A TEST
+		new DB_Connect();
+		//---------------
+		
+		
+		
 		
 		JFrame frame = new JFrame("Secure Login Test");
 		
