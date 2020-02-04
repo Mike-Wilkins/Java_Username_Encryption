@@ -6,11 +6,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -36,10 +39,19 @@ public class MainFrame {
 		panel1.add(label1);
 		
 		JLabel username = new JLabel("username");
-		JTextField text1 = new JTextField(10);
-		JLabel password = new JLabel("password");
-		JTextField text2 = new JTextField(10);
+		JPasswordField text1 = new JPasswordField(10);
+		JLabel password = new JLabel("password");	
+		JPasswordField text2 = new JPasswordField(10);
 		JButton btn1 = new JButton("Submit");
+		
+		btn1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				char[] newUsername = text1.getPassword();
+				char[] newPassword = text2.getPassword();
+				
+			}
+		});
 		
 		
 		
@@ -80,10 +92,19 @@ public class MainFrame {
         panel2.add(label2);
         
         JLabel new_username = new JLabel("username");
-		JTextField text3 = new JTextField(10);
+		JPasswordField text3 = new JPasswordField(10);
 		JLabel new_password = new JLabel("password");
-		JTextField text4 = new JTextField(10);
+		JPasswordField text4 = new JPasswordField(10);
 		JButton btn2 = new JButton("Submit");
+		
+		btn2.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				char[] myUsername = text3.getPassword();
+				char[] myPassword = text4.getPassword();
+				
+			}
+		});
 		
 		
 		GridBagConstraints p2 = new GridBagConstraints();
