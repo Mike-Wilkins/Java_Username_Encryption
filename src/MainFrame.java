@@ -9,6 +9,9 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,12 +24,6 @@ import javax.swing.border.LineBorder;
 public class MainFrame {
 	
 	public MainFrame() throws IOException {
-		
-		//THIS IS A TEST
-		new DB_Connect();
-		//---------------
-		
-		
 		
 		
 		JFrame frame = new JFrame("Secure Login Test");
@@ -55,8 +52,10 @@ public class MainFrame {
 		btn1.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				char[] newUsername = text1.getPassword();
-				char[] newPassword = text2.getPassword();
+				char[] myUsername = text1.getPassword();
+				char[] myPassword = text2.getPassword();
+				
+				
 				
 			}
 		});
@@ -101,15 +100,37 @@ public class MainFrame {
         
         JLabel new_username = new JLabel("username");
 		JPasswordField text3 = new JPasswordField(10);
+		
 		JLabel new_password = new JLabel("password");
 		JPasswordField text4 = new JPasswordField(10);
+		
 		JButton btn2 = new JButton("Submit");
 		
 		btn2.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				char[] myUsername = text3.getPassword();
-				char[] myPassword = text4.getPassword();
+				char[] newUsername = text3.getPassword();
+				char[] newPassword = text4.getPassword();
+				
+				
+				try {
+					DB_Connect newLogin = new DB_Connect();
+					newLogin.db_insert(newUsername, newPassword);
+					
+					//Zero out the possible password, for security.
+					
+					Arrays.fill(newUsername, '0');
+					Arrays.fill(newPassword, '0');
+					
+					
+					
+					
+				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException
+						| IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+						| SecurityException | IOException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
