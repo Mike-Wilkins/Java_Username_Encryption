@@ -16,6 +16,7 @@ import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -54,6 +55,23 @@ public class MainFrame {
 			public void actionPerformed(ActionEvent e) {
 				char[] myUsername = text1.getPassword();
 				char[] myPassword = text2.getPassword();
+			
+				try {
+					DB_Connect checkLogin = new DB_Connect();
+					
+					checkLogin.db_retrieve(myUsername, myPassword);
+					
+					text1.setText("");
+					text2.setText("");
+					
+					
+				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException
+						| IllegalArgumentException | InvocationTargetException | NoSuchMethodException
+						| SecurityException | IOException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				
 				
 				
@@ -117,12 +135,15 @@ public class MainFrame {
 					DB_Connect newLogin = new DB_Connect();
 					newLogin.db_insert(newUsername, newPassword);
 					
-					//Zero out the possible password, for security.
+					//Zero out the possible password and user name, for security.
 					
 					Arrays.fill(newUsername, '0');
 					Arrays.fill(newPassword, '0');
 					
+					JOptionPane.showMessageDialog(frame, "Upload Successful", null, JOptionPane.PLAIN_MESSAGE);
 					
+					text3.setText("");
+					text4.setText("");
 					
 					
 				} catch (InstantiationException | IllegalAccessException | ClassNotFoundException

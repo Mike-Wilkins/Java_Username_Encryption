@@ -7,7 +7,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Properties;
+
+import javax.swing.JOptionPane;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
 
 
 
@@ -48,6 +54,35 @@ public class DB_Connect {
 			
 		}
 		
+// Retrieve name from MySQL
 		
+		public void db_retrieve(char[] myUsername, char[] myPassword) throws SQLException {
+			
+			//String userInput = DigestUtils.md5Hex(String.copyValueOf(myUsername));
+			
+			
+			
+			String myQuery = "SELECT username, password from encrypt_test.new_table WHERE username = md5('" + String.copyValueOf(myUsername)+ "') AND password = md5('" + String.copyValueOf(myPassword)+ "')";
+			
+			PreparedStatement ps = null;
+			ResultSet rSet = null;
+			
+			ps = connection.prepareStatement(myQuery);
+		    rSet = ps.executeQuery();
+		    
+		    
+		    	if(rSet.next()) {
+			    	// String[] name = {rSet.getString("username"), rSet.getString("password")};
+			    	
+			    		JOptionPane.showMessageDialog(null, "Login Validated", null, JOptionPane.PLAIN_MESSAGE);
+			    		
+			    } else {
+			    		JOptionPane.showMessageDialog(null, "Invalid Login", null, JOptionPane.PLAIN_MESSAGE);
+			  }
+		    	
+		    connection.close();
+		    
+			
+		}
 
 }
