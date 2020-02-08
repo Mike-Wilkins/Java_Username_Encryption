@@ -1,4 +1,4 @@
-# Java_Username_Encryption
+# Java Username/Password Encryption
 <img src="images/Java_MySQL.png" width="150">
 
 This application focuses strategies used for ensuring the secure handling of sensitive data between GUIs and cloud-based databases. The development process is structured around two specific core principles centered on manipulating data securely using Java and MySQL:
