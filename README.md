@@ -12,15 +12,15 @@ JButton btn1 = new JButton("Submit");
 
 btn2.addActionListener(new ActionListener() {
 			
-			public void actionPerformed(ActionEvent e) {
-				char[] myUsername = text3.getPassword();            //Store username and password in char arrays
-				char[] myPassword = text3.getPassword();
+	public void actionPerformed(ActionEvent e) {
+		char[] myUsername = text3.getPassword();            //Store username and password in char arrays
+		char[] myPassword = text3.getPassword();
             
-         			DB_Connect newLogin = new DB_Connect();             // Create instance of DB_Connect and pass new username
-				checkLogin.db_retrieve(newUsername, newPassword);   // and password through db_retrieve method 
+         	DB_Connect newLogin = new DB_Connect();             // Create instance of DB_Connect and pass new username
+		checkLogin.db_retrieve(newUsername, newPassword);   // and password through db_retrieve method 
 					
-				text3.setText("");                                  // Remove username and password for char arrays
-				text4.setText("");        
+		text3.setText("");                                  // Remove username and password for char arrays
+		text4.setText("");        
 ```
 
 
