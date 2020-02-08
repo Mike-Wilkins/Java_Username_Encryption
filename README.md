@@ -24,7 +24,7 @@ btn2.addActionListener(new ActionListener() {
 ```
 
 
-* Cryptographic hash functions should be applied to sensitive data prior to database storage. This application utilizes md5 hash functions within the MySQL INSERT statement.
+* Cryptographic hash functions should be applied to sensitive data prior to database storage. This application demonstrates the use of md5 hash functions within the MySQL INSERT statement.
 ```
 // Insert username and password into MySQL using md5 hash function
 		
