@@ -17,7 +17,7 @@ btn2.addActionListener(new ActionListener() {
 		char[] myPassword = text3.getPassword();
             
          	DB_Connect newLogin = new DB_Connect();             // Create instance of DB_Connect and pass new username
-		checkLogin.db_retrieve(newUsername, newPassword);   // and password through db_retrieve method 
+		checkLogin.db_insert(newUsername, newPassword);   // and password through db_retrieve method 
 					
 		text3.setText("");                                  // Remove username and password for char arrays
 		text4.setText("");        
@@ -25,3 +25,18 @@ btn2.addActionListener(new ActionListener() {
 
 
 * Cryptographic hash functions should be applied to sensitive data prior to database storage. This application utilizes md5 hash functions within the MySQL INSERT statement.
+```
+// Insert user name and password into MySQL
+		
+	public void db_insert(char[] newUsername, char[] newPassword) throws SQLException {
+			
+	String myQuery = "INSERT into encrypt_test.new_table (username, password) values (md5('" + String.copyValueOf(newUsername)+ "') , 			    md5('"+ String.copyValueOf(newPassword)+"'))";
+	PreparedStatement ps = null;
+			
+	ps = connection.prepareStatement(myQuery);
+        ps.executeUpdate();
+		    
+        connection.close();
+			
+		}
+```
