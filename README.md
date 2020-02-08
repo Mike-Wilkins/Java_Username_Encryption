@@ -5,10 +5,9 @@ This application focuses strategies used for ensuring the secure handling of sen
 
 * Strings in Java are immutable which means that we cannot change them using any high-level APIs. Any change on a String object will produce a new String, keeping the old one in memory. Therefore, sensitive data such as usernames, passwords should be stored in a char array (char[]) and not as a String. The contents of the char array can be destroyed after validation before garbage collection takes place.
 
-´´´
+```
 String
-´´´
-
+```
 
 
 * Cryptographic hash functions should be applied to sensitive data prior to database storage. This application utilizes md5 hash functions within the MySQL INSERT statement.
