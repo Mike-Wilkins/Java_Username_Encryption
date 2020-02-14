@@ -30,7 +30,7 @@ btn2.addActionListener(new ActionListener() {
 		
 	public void db_insert(char[] newUsername, char[] newPassword) throws SQLException {
 			
-	String myQuery = "INSERT into encrypt_test.new_table (username, password) values (md5('" + String.copyValueOf(newUsername)+ "') , 			    md5('"+ String.copyValueOf(newPassword)+"'))";
+	String myQuery = "INSERT into encrypt_test.new_table (username, password) values (md5('" + String.copyValueOf(newUsername)+ "'),md5('"+ String.copyValueOf(newPassword)+"'))";
 	PreparedStatement ps = null;
 			
 	ps = connection.prepareStatement(myQuery);
